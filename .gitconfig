@@ -1,0 +1,12 @@
+[user]
+	name = Tarik02
+	email = Taras.Fomin@gmail.com
+[credential]
+	helper = store
+
+[includeIf "gitdir:~/Laradock/"]
+	path = ~/Laradock/.gitconfig
+
+[includeIf "gitdir:~/Work/"]
+	path = ~/Work/.gitconfig
+
