@@ -1,9 +1,9 @@
 if [ ! -f ~/.zinit/bin/zinit.zsh ]; then
-	sh -c "$(curl -fsSL https://raw.githubusercontent.com/zdharma/zinit/master/doc/install.sh)"
+    sh -c "$(curl -fsSL https://raw.githubusercontent.com/zdharma/zinit/master/doc/install.sh)"
 fi
 
 if [ -d /Users/tarik02/.zinit/bin/zmodules/Src ]; then
-	module_path+=( "/Users/tarik02/.zinit/bin/zmodules/Src" )
+    module_path+=( "/Users/tarik02/.zinit/bin/zmodules/Src" )
     zmodload zdharma/zplugin
 fi
 
@@ -91,7 +91,10 @@ bindkey "^[[1;5C" forward-word
 bindkey "^[[1;5D" backward-word
 bindkey "^[^[[C" forward-word
 bindkey "^[^[[D" backward-word
+bindkey "^[[H" beginning-of-line
+bindkey "^[[F" end-of-line
 
 PROMPT=''
 PROMPT="%(?:%{$fg_bold[green]%}:%{$fg_bold[red]%})"
 PROMPT+='${USERNAME} %{$reset_color%}: %{$fg[cyan]%}%c%{$reset_color%} $(git_prompt_info)'
+
