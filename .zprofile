@@ -49,7 +49,7 @@ function crun {
 	if [ -f "$1" ]; then
 		filename="$1"
 	else
-		filename=$(find . -type f \( -iname \*.c -o -iname \*.cpp \) | head -1)
+		filename=$(find . -maxdepth 1 -type f \( -iname \*.c -o -iname \*.cpp \) | head -1)
 	fi
 	extension="${filename##*.}"
 	name="${filename%.*}"
