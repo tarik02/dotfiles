@@ -10,3 +10,5 @@
 [includeIf "gitdir:~/Work/"]
 	path = ~/Work/.gitconfig
 
+[help]
+	autocorrect = 10
