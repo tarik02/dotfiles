@@ -86,6 +86,7 @@ setopt long_list_jobs
 setopt pipe_fail
 setopt share_history
 setopt no_rm_star_silent
+setopt correct
 
 bindkey "^[[1;5C" forward-word
 bindkey "^[[1;5D" backward-word
