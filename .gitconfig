@@ -11,4 +11,4 @@
 	path = ~/Work/.gitconfig
 
 [help]
-	autocorrect = 10
+	autocorrect = 1

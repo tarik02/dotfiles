@@ -2,8 +2,8 @@ if [ ! -f ~/.zinit/bin/zinit.zsh ]; then
     sh -c "$(curl -fsSL https://raw.githubusercontent.com/zdharma/zinit/master/doc/install.sh)"
 fi
 
-if [ -d /Users/tarik02/.zinit/bin/zmodules/Src ]; then
-    module_path+=( "/Users/tarik02/.zinit/bin/zmodules/Src" )
+if [ -d $HOME/.zinit/bin/zmodules/Src ]; then
+    module_path+=( "$HOME/.zinit/bin/zmodules/Src" )
     zmodload zdharma/zplugin
 fi
 
@@ -98,4 +98,9 @@ bindkey "^[[F" end-of-line
 PROMPT=''
 PROMPT="%(?:%{$fg_bold[green]%}:%{$fg_bold[red]%})"
 PROMPT+='${USERNAME} %{$reset_color%}: %{$fg[cyan]%}%c%{$reset_color%} $(git_prompt_info)'
+
+
+if type "thefuck" > /dev/null; then
+    eval $(thefuck --alias)
+fi
 

@@ -15,10 +15,6 @@ export PATH=$PATH:$ANDROID_HOME/platform-tools
 export PATH="$HOME/.bin:$PATH"
 export PATH="$HOME/.composer/vendor/bin:$PATH"
 
-##export PATH="/usr/local/opt/php/bin:$PATH"
-
-export HAXE_STD_PATH="/usr/local/lib/haxe/std"
-
 alias ll="ls -alF"
 alias la="ls -A"
 alias l="ls -CF"
@@ -48,6 +44,7 @@ function start {
 function crun {
 	if [ -f "$1" ]; then
 		filename="$1"
+		shift
 	else
 		filename=$(find . -maxdepth 1 -type f \( -iname \*.c -o -iname \*.cpp \) | head -1)
 	fi
@@ -55,10 +52,58 @@ function crun {
 	name="${filename%.*}"
 
 	if [[ $extension == 'c' ]]; then
-		clang -std=c11 -lm $filename -o "$name.out" && clear && "./$name.out"
+		clang -std=c11 -lm "$@" $filename -o "$name.out" && clear && "./$name.out"
 	else
-		clang++ -std=c++17 -lm $filename -o "$name.out" && clear && "./$name.out"
+		clang++ -std=c++17 -lm "$@" $filename -o "$name.out" && clear && "./$name.out"
 	fi
+}
+
+function merge-to {
+	target_branch="$1"
+	shift
+
+	branch_name=$(git symbolic-ref -q HEAD)
+	branch_name=${branch_name##refs/heads/}
+	branch_name=${branch_name:-HEAD}
+
+	git checkout $target_branch && git merge $branch_name && git push && git checkout $branch_name
+}
+
+function hide-static {
+	[[ -d .git ]] || return 1
+
+	show-static
+
+	echo '/static/' >> .git/info/exclude
+	echo '/var/control/' >> .git/info/exclude
+
+	return 0
+}
+
+function show-static {
+	[[ -d .git ]] || return 1
+
+	cp .git/info/exclude .git/info/exclude.bak
+	cat .git/info/exclude.bak \
+		| sed '/^\/static\/$/d' \
+		| sed '/^\/var\/control\/$/d' \
+		> .git/info/exclude
+	rm .git/info/exclude.bak
+}
+
+function commit-static {
+	[[ -d .git ]] || return 1
+
+	message="${1:-build assets}"
+
+	show-static
+
+	git add static var
+	git commit -m "$message"
+
+	hide-static
+
+	return 0
 }
 
 [ -f $HOME/.travis/travis.sh ] && source $HOME/.travis/travis.sh
