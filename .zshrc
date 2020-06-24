@@ -100,14 +100,10 @@ PROMPT="%(?:%{$fg_bold[green]%}:%{$fg_bold[red]%})"
 PROMPT+='${USERNAME} %{$reset_color%}: %{$fg[cyan]%}%c%{$reset_color%} $(git_prompt_info)'
 
 
+source $HOME/.zsh_paths
 source $HOME/.zsh_aliases
 
 
-if [ -d $HOME/.fnm ]; then
-	export PATH="$HOME/.fnm:$PATH"
-	eval "$(fnm env --multi)"
-fi
-
+type fnm > /dev/null && eval "$(fnm env --multi)"
 [ -f $HOME/.travis/travis.sh ] && source $HOME/.travis/travis.sh
-
 type "thefuck" > /dev/null && eval $(thefuck --alias)
