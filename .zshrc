@@ -104,6 +104,12 @@ source $HOME/.zsh_paths
 source $HOME/.zsh_aliases
 
 
-type fnm > /dev/null && eval "$(fnm env --multi)"
+if type fnm > /dev/null; then
+	eval "$(fnm env --multi)"
+fi
+
 [ -f $HOME/.travis/travis.sh ] && source $HOME/.travis/travis.sh
-type "thefuck" > /dev/null && eval $(thefuck --alias)
+
+if type "thefuck" > /dev/null; then
+	eval $(thefuck --alias)
+fi
