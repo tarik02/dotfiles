@@ -6,6 +6,10 @@ if [ -f $HOME/.profile ]; then
 	emulate zsh
 fi
 
+if [ -f $HOME/.env ]; then
+	source ~/.env
+fi
+
 export ANDROID_HOME=$HOME/Library/Android/sdk
 export PATH=$PATH:$ANDROID_HOME/emulator
 export PATH=$PATH:$ANDROID_HOME/tools
@@ -104,6 +108,32 @@ function commit-static {
 	hide-static
 
 	return 0
+}
+
+function laradock {
+	if [ -z $LARADOCK_ROOT ]; then
+		LARADOCK_ROOT=$HOME/Laradock
+	fi
+
+	if ! type python3 > /dev/null; then
+		echo "This command requires python3 to be available."
+		return 1
+	fi
+
+	if [[ "$1" == "init" ]]; then
+		shift
+		# git clone
+		LARADOCK_ROOT="$LARADOCK_ROOT" python3 $LARADOCK_ROOT/cli.py init
+		return $?
+	fi
+
+	if [ ! -d $LARADOCK_ROOT ] || [ ! -f $LARADOCK_ROOT/cli.py ]; then
+		echo "Laradock is not initialized. Run \`laradock init\` to initialize laradock."
+		return 1
+	fi
+
+	LARADOCK_ROOT="$LARADOCK_ROOT" python3 $LARADOCK_ROOT/cli.py "$@"
+	return $?
 }
 
 [ -f $HOME/.travis/travis.sh ] && source $HOME/.travis/travis.sh
