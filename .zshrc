@@ -103,6 +103,11 @@ PROMPT+='${USERNAME} %{$reset_color%}: %{$fg[cyan]%}%c%{$reset_color%} $(git_pro
 source $HOME/.zsh_aliases
 
 
-[ -d $HOME/.fnm ] && eval "$(fnm env --multi)"
+if [ -d $HOME/.fnm ]; then
+	export PATH="$HOME/.fnm:$PATH"
+	eval "$(fnm env --multi)"
+fi
+
 [ -f $HOME/.travis/travis.sh ] && source $HOME/.travis/travis.sh
+
 type "thefuck" > /dev/null && eval $(thefuck --alias)
