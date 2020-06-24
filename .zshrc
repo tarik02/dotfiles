@@ -2,7 +2,7 @@ if [ ! -f ~/.zinit/bin/zinit.zsh ]; then
     sh -c "$(curl -fsSL https://raw.githubusercontent.com/zdharma/zinit/master/doc/install.sh)"
 fi
 
-if [ -d $HOME/.zinit/bin/zmodules/Src ]; then
+if [ -f $HOME/.zinit/bin/zinit.zsh.zwc ]; then
     module_path+=( "$HOME/.zinit/bin/zmodules/Src" )
     zmodload zdharma/zplugin
 fi
