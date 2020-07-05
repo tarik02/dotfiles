@@ -103,6 +103,9 @@ PROMPT+='${USERNAME} %{$reset_color%}: %{$fg[cyan]%}%c%{$reset_color%} $(git_pro
 source $HOME/.zsh_paths
 source $HOME/.zsh_aliases
 
+if [ -f $HOME/.env ]; then
+	source ~/.env
+fi
 
 if type fnm > /dev/null; then
 	eval "$(fnm env --multi)"
@@ -113,3 +116,15 @@ fi
 if type "thefuck" > /dev/null; then
 	eval $(thefuck --alias)
 fi
+
+function precmd {
+    echo -ne $(print -Pn - '\e]0;%c\a')
+}
+
+function preexec {
+    COMMAND_FILE=$(echo $1 | cut -d' ' -f1)
+    TITLE=$(basename $COMMAND_FILE)
+    echo -ne $(print -Pn - '\e]0;$TITLE\a')
+}
+
+### End of Zinit's installer chunk
