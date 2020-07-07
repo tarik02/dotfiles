@@ -8,6 +8,7 @@ alias z="j"
 
 alias artisan="php artisan"
 alias art="artisan"
+alias dk="laradock"
 
 alias _="sudo"
 
@@ -89,30 +90,4 @@ function commit-static {
 	hide-static
 
 	return 0
-}
-
-function laradock {
-	if [ -z $LARADOCK_ROOT ]; then
-		LARADOCK_ROOT=$HOME/Laradock
-	fi
-
-	if ! type python3 > /dev/null; then
-		echo "This command requires python3 to be available."
-		return 1
-	fi
-
-	if [[ "$1" == "init" ]]; then
-		shift
-		# git clone
-		LARADOCK_ROOT="$LARADOCK_ROOT" python3 $LARADOCK_ROOT/cli.py init
-		return $?
-	fi
-
-	if [ ! -d $LARADOCK_ROOT ] || [ ! -f $LARADOCK_ROOT/cli.py ]; then
-		echo "Laradock is not initialized. Run \`laradock init\` to initialize laradock."
-		return 1
-	fi
-
-	LARADOCK_ROOT="$LARADOCK_ROOT" python3 $LARADOCK_ROOT/cli.py "$@"
-	return $?
 }
