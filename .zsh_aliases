@@ -44,6 +44,27 @@ function crun {
 	fi
 }
 
+function work-here {
+	session=$(basename $(pwd))
+
+	tmux new-session -s $session -d
+
+	tmux select-window -t $session:1 
+	tmux send-keys "[ -d control/assets ] && cd control/assets || cd resources/assets; laradock enter" C-m 
+
+	tmux new-window -t $session:2
+	tmux send-keys "[ -d control/assets ] && cd control/assets || cd resources/assets; laradock enter" C-m 
+
+	tmux new-window -t $session:3
+	tmux send-keys "laradock enter" C-m 
+
+	tmux new-window -t $session:4
+
+	tmux select-window -t $session:3
+
+	tmux attach-session -t $session
+}
+
 function merge-to {
 	target_branch="$1"
 	shift
