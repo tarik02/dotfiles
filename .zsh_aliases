@@ -50,13 +50,13 @@ function work-here {
 	tmux new-session -s $session -d
 
 	tmux select-window -t $session:1 
-	tmux send-keys "[ -d control/assets ] && cd control/assets || cd resources/assets; laradock enter" C-m 
+	tmux send-keys "[ -d control/assets ] && cd control/assets || cd resources/assets; laradock enter; exit" C-m 
 
 	tmux splitw -h -p 35
-	tmux send-keys "[ -d control/assets ] && cd control/assets || cd resources/assets; laradock enter" C-m 
+	tmux send-keys "[ -d control/assets ] && cd control/assets || cd resources/assets; laradock enter; exit" C-m 
 
 	tmux new-window -t $session:2
-	tmux send-keys "laradock enter" C-m 
+	tmux send-keys "laradock enter; exit" C-m 
 
 	tmux new-window -t $session:3
 
