@@ -4,6 +4,7 @@
 call plug#begin('~/.vim/plugged')
 
 Plug 'tpope/vim-sleuth'
+Plug 'megantiu/true.vim'
 
 " Initialize plugin system
 call plug#end()
@@ -42,6 +43,12 @@ set mouse=a
 
 " syntax highlighting
 syntax on
+
+if (has('termguicolors'))
+	set termguicolors
+endif
+
+colorscheme true
 
 " line numbers
 set number

@@ -128,3 +128,8 @@ function preexec {
 }
 
 ### End of Zinit's installer chunk
+
+[[ -s "$HOME/.xmake/profile" ]] && source "$HOME/.xmake/profile" # load xmake profile
+
+# added by travis gem
+[ ! -s /home/tarik02/.travis/travis.sh ] || source /home/tarik02/.travis/travis.sh

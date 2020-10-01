@@ -4,11 +4,17 @@
 [credential]
 	helper = store
 
-[includeIf "gitdir:~/Laradock/"]
-	path = ~/Laradock/.gitconfig
+[includeIf "gitdir:/home/tarik02/Laradock/"]
+	path = /home/tarik02/Laradock/.gitconfig
 
-[includeIf "gitdir:~/Work/"]
-	path = ~/Work/.gitconfig
+[includeIf "gitdir:/home/tarik02/Work/"]
+	path = /home/tarik02/Work/.gitconfig
 
 [help]
 	autocorrect = 1
+[commit]
+	gpgsign = false
+[gpg]
+	program = gpg
+[core]
+	autocrlf = false
