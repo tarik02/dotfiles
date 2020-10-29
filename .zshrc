@@ -1,10 +1,19 @@
 if [ ! -f ~/.zinit/bin/zinit.zsh ]; then
-    sh -c "$(curl -fsSL https://raw.githubusercontent.com/zdharma/zinit/master/doc/install.sh)"
+	sh -c "$(curl -fsSL https://raw.githubusercontent.com/zdharma/zinit/master/doc/install.sh)"
+
+	if type vim > /dev/null && [ ! -f ~/.vim/autoload/plug.vim ]; then
+		curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+		vim +PlugInstall +qall > /dev/null
+	fi
+
+	if type tmux > /dev/null && [ ! -d ~/.tmux/plugins/tpm ]; then
+		git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+	fi
 fi
 
 if [ -f $HOME/.zinit/bin/zinit.zsh.zwc ]; then
-    module_path+=( "$HOME/.zinit/bin/zmodules/Src" )
-    zmodload zdharma/zplugin
+	module_path+=( "$HOME/.zinit/bin/zmodules/Src" )
+	zmodload zdharma/zplugin
 fi
 
 source ~/.zinit/bin/zinit.zsh
@@ -38,7 +47,7 @@ zinit light zdharma/fast-syntax-highlighting
 zinit ice wait lucid
 # zinit light zsh-users/zsh-completions
 zinit wait lucid atload"zicompinit; zicdreplay" blockf for \
-    zsh-users/zsh-completions
+	zsh-users/zsh-completions
 
 zinit cdclear -q # <- forget completions provided up to this moment
 setopt promptsubst
@@ -120,13 +129,13 @@ if type "thefuck" > /dev/null; then
 fi
 
 function precmd {
-    echo -ne $(print -Pn - '\e]0;%c\a')
+	echo -ne $(print -Pn - '\e]0;%c\a')
 }
 
 function preexec {
-    COMMAND_FILE=$(echo $1 | cut -d' ' -f1)
-    TITLE=$(basename $COMMAND_FILE)
-    echo -ne $(print -Pn - '\e]0;$TITLE\a')
+	COMMAND_FILE=$(echo $1 | cut -d' ' -f1)
+	TITLE=$(basename $COMMAND_FILE)
+	echo -ne $(print -Pn - '\e]0;$TITLE\a')
 }
 
 ### End of Zinit's installer chunk
