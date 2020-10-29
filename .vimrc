@@ -48,7 +48,7 @@ if (has('termguicolors'))
 	set termguicolors
 endif
 
-colorscheme true
+silent! colorscheme true
 
 " line numbers
 set number
