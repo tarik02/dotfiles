@@ -31,8 +31,8 @@ set ignorecase
 set lz
 
 " visible tabs
-set listchars=tab:··
-set list
+" set listchars=tab
+" set list
 
 " encoding and format
 set ffs=unix,dos,mac
