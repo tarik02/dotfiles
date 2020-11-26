@@ -106,7 +106,7 @@ bindkey "^[[F" end-of-line
 
 PROMPT=''
 PROMPT="%(?:%{$fg_bold[green]%}:%{$fg_bold[red]%})"
-PROMPT+='${USERNAME} %{$reset_color%}: %{$fg[cyan]%}%c%{$reset_color%} $(git_prompt_info)'
+PROMPT+='${USERNAME}@${HOST} %{$reset_color%}: %{$fg[cyan]%}%c%{$reset_color%} $(git_prompt_info)'
 
 
 source $HOME/.zsh_paths
