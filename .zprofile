@@ -6,5 +6,3 @@ if [ -f $HOME/.profile ]; then
 	emulate zsh
 fi
 
-. ~/.zsh_paths
-

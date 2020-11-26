@@ -111,10 +111,6 @@ PROMPT+='${USERNAME}@${HOST} %{$reset_color%}: %{$fg[cyan]%}%c%{$reset_color%} $
 
 source $HOME/.zsh_aliases
 
-if [ -f $HOME/.env ]; then
-	source ~/.env
-fi
-
 if type fnm > /dev/null; then
 	eval "$(fnm env)"
 fi
