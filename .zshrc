@@ -109,7 +109,6 @@ PROMPT="%(?:%{$fg_bold[green]%}:%{$fg_bold[red]%})"
 PROMPT+='${USERNAME}@${HOST} %{$reset_color%}: %{$fg[cyan]%}%c%{$reset_color%} $(git_prompt_info)'
 
 
-source $HOME/.zsh_paths
 source $HOME/.zsh_aliases
 
 if [ -f $HOME/.env ]; then

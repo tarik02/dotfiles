@@ -9,7 +9,9 @@ if [ ! -z $ANDROID_HOME ]; then
 	export PATH=$PATH:$ANDROID_HOME/platform-tools
 fi
 
-export PATH="$HOME/.bin:$PATH"
+if [ -d $HOME/.bin ]; then
+	export PATH="$HOME/.bin:$PATH"
+fi
 
 if [ -d $HOME/.composer ]; then
 	export PATH="$HOME/.composer/vendor/bin:$PATH"
@@ -21,6 +23,10 @@ fi
 
 if [ -d $HOME/.yarn ]; then
 	export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
+fi
+
+if [ -d $HOME/.cargo/bin ]; then
+	export PATH="$HOME/.cargo/bin:$PATH"
 fi
 
 if [ -d $HOME/.local/bin ]; then
