@@ -117,8 +117,6 @@ fi
 
 [ -f $HOME/.travis/travis.sh ] && source $HOME/.travis/travis.sh
 
-[[ -s "$HOME/.xmake/profile" ]] && source "$HOME/.xmake/profile" # load xmake profile
-
 if type "thefuck" > /dev/null; then
 	eval $(thefuck --alias)
 fi
