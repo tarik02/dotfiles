@@ -21,7 +21,12 @@ function swap {
 
 alias dsstore="find . -name '*.DS_Store' -type f -ls -delete"
 alias grep='grep --color=auto '
-alias ls='ls -G '
+
+if type natls > /dev/null; then
+	alias ls='natls --gdf -ln'
+else
+	alias ls='ls -G '
+fi
 
 function start {
 	(nohup $@ </dev/null >/dev/null 2>&1 &) >/dev/null 2>&1
