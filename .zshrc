@@ -80,7 +80,6 @@ zstyle ':completion:*' menu select
 
 HISTSIZE=50000
 SAVEHIST=50000
-HISTFILE=~/.zsh_history
 
 setopt append_history
 setopt auto_pushd
