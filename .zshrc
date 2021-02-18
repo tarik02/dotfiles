@@ -59,7 +59,7 @@ zinit snippet OMZ::themes/robbyrussell.zsh-theme
 #zinit light direnv/direnv
 
 ZSH_AUTOSUGGEST_USE_ASYNC=true
-ZSH_AUTOSUGGEST_STRATEGY=(history completion)
+ZSH_AUTOSUGGEST_STRATEGY=(completion history)
 #ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=#ff00ff,bg=grey,bold,underline"
 
 setopt HIST_IGNORE_ALL_DUPS
