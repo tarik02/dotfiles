@@ -78,7 +78,6 @@ fpath=(/usr/local/share/zsh-completions $fpath)
 # zmodload -i zsh/complist
 zstyle ':completion:*' menu select
 
-HISTFILE=~/.zsh_history
 HISTSIZE=50000
 SAVEHIST=50000
 
