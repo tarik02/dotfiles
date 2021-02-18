@@ -12,7 +12,7 @@ function artisan {
 	done
 
 	if [[ -e "$current_path/artisan" ]]; then
-		php "$current_path/artisan" -- "$@"
+		php "$current_path/artisan" "$@"
 		return $?
 	else
 		echo "Failed to find artisan" > /dev/stderr
