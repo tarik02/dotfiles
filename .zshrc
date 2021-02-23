@@ -11,6 +11,14 @@ if [ ! -f ~/.zinit/bin/zinit.zsh ]; then
 	fi
 fi
 
+if [ ! -d ~/.local/bin ]; then
+	mkdir ~/.local/bin
+fi
+
+if [ ! -f ~/.local/bin/starship ]; then
+	curl -fsSL https://starship.rs/install.sh | bash -s - --yes --bin-dir $HOME/.local/bin > /dev/null
+fi
+
 if [ -f $HOME/.zinit/bin/zinit.zsh.zwc ]; then
 	module_path+=( "$HOME/.zinit/bin/zmodules/Src" )
 	zmodload zdharma/zplugin
@@ -45,7 +53,7 @@ zinit light zsh-users/zsh-autosuggestions
 zinit ice wait lucid
 zinit light zdharma/fast-syntax-highlighting
 zinit ice wait lucid
-# zinit light zsh-users/zsh-completions
+zinit light zsh-users/zsh-completions
 zinit wait lucid atload"zicompinit; zicdreplay" blockf for \
 	zsh-users/zsh-completions
 
@@ -59,8 +67,8 @@ zinit snippet OMZ::themes/robbyrussell.zsh-theme
 #zinit light direnv/direnv
 
 ZSH_AUTOSUGGEST_USE_ASYNC=true
-ZSH_AUTOSUGGEST_STRATEGY=(history completion)
-#ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=#ff00ff,bg=grey,bold,underline"
+ZSH_AUTOSUGGEST_STRATEGY=(completion)
+ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=#ff00ff,bg=grey,bold,underline"
 
 setopt HIST_IGNORE_ALL_DUPS
 unsetopt AUTO_CD
@@ -104,9 +112,7 @@ bindkey "^[^[[D" backward-word
 bindkey "^[[H" beginning-of-line
 bindkey "^[[F" end-of-line
 
-PROMPT=''
-PROMPT="%(?:%{$fg_bold[green]%}:%{$fg_bold[red]%})"
-PROMPT+='${USERNAME}@${HOST} %{$reset_color%}: %{$fg[cyan]%}%c%{$reset_color%} $(git_prompt_info)'
+eval "$(starship init zsh)"
 
 
 source $HOME/.zsh_aliases
