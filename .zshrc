@@ -57,14 +57,11 @@ zinit light zsh-users/zsh-completions
 zinit wait lucid atload"zicompinit; zicdreplay" blockf for \
 	zsh-users/zsh-completions
 
-zinit cdclear -q # <- forget completions provided up to this moment
+#zinit cdclear -q # <- forget completions provided up to this moment
 setopt promptsubst
 
 zinit snippet OMZ::themes/robbyrussell.zsh-theme
-#zinit snippet OMZ::themes/blinks.zsh-theme
 
-
-#zinit light direnv/direnv
 
 ZSH_AUTOSUGGEST_USE_ASYNC=true
 ZSH_AUTOSUGGEST_STRATEGY=(completion)
@@ -82,8 +79,6 @@ bindkey "$key[Down]" down-line-or-beginning-search
 
 zstyle ':completion:*:*:git:*' script /usr/local/etc/bash_completion.d/git-completion.bash
 fpath=(/usr/local/share/zsh-completions $fpath)
-# autoload -U compinit && compinit
-# zmodload -i zsh/complist
 zstyle ':completion:*' menu select
 
 HISTSIZE=50000
