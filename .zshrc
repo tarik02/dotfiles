@@ -67,6 +67,10 @@ ZSH_AUTOSUGGEST_USE_ASYNC=true
 ZSH_AUTOSUGGEST_STRATEGY=(completion)
 ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=#ff00ff,bg=grey,bold,underline"
 
+if [ -z $HISTFILE ]; then
+	export HISTFILE=$HOME/.zsh_history
+fi
+
 setopt HIST_IGNORE_ALL_DUPS
 unsetopt AUTO_CD
 

@@ -1,0 +1,11 @@
+#!/bin/bash
+
+if grep -q microsoft /proc/version; then
+	tee <&0 | iconv -f utf8 -t cp1251 | ${WSL_ROOT:-/mnt/c}/Windows/System32/clip.exe
+elif type xclip > /dev/null; then
+	tee <&0 | xclip -selection clipboard -in
+elif type xsel > /dev/null; then
+	tee <&0 | xsel --input --clipboard
+else
+	cat - > /tmp/pasteboard
+fi

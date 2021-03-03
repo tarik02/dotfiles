@@ -1,0 +1,13 @@
+#!/bin/bash
+
+if grep -q microsoft /proc/version; then
+	${WSL_ROOT:-/mnt/c}/Windows/System32/paste.exe
+elif type xclip > /dev/null; then
+	xclip -selection clipboard -out
+elif type xsel > /dev/null; then
+	xsel --output --clipboard
+else
+	if [ -f /tmp/pasteboard ]; then
+		cat /tmp/pasteboard
+	fi
+fi

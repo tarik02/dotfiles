@@ -1,9 +1,40 @@
+# common shell aliases
 alias ll="ls -alF"
 alias la="ls -A"
 alias l="ls -CF"
 
+if type natls > /dev/null; then
+	function ls {
+		if [ $# -eq 0 ]; then
+			natls --gdf -ln
+		else
+			/bin/ls "$@"
+		fi
+	}
+else
+	alias ls='ls -G '
+fi
+
 alias z="j"
 
+alias _="sudo"
+
+alias dsstore="find . -name '*.DS_Store' -type f -ls -delete"
+alias grep='grep --color=auto '
+
+function swap {
+	tmp=$(mktemp)
+	mv $1 $tmp
+	mv $2 $1
+	mv $tmp $2
+}
+
+function start {
+	(nohup $@ </dev/null >/dev/null 2>&1 &) >/dev/null 2>&1
+}
+
+
+# Laravel-related aliases
 function artisan {
 	current_path="$(pwd)"
 
@@ -22,28 +53,8 @@ function artisan {
 alias art="artisan"
 alias dk="laradock"
 
-alias _="sudo"
 
-function swap {
-	tmp=$(mktemp)
-	mv $1 $tmp
-	mv $2 $1
-	mv $tmp $2
-}
-
-alias dsstore="find . -name '*.DS_Store' -type f -ls -delete"
-alias grep='grep --color=auto '
-
-if type natls > /dev/null; then
-	alias ls='natls --gdf -ln'
-else
-	alias ls='ls -G '
-fi
-
-function start {
-	(nohup $@ </dev/null >/dev/null 2>&1 &) >/dev/null 2>&1
-}
-
+# utility aliases
 function crun {
 	if [ -f "$1" ]; then
 		filename="$1"
@@ -61,46 +72,7 @@ function crun {
 	fi
 }
 
-if ! type pbcopy > /dev/null; then
-	if type xclip > /dev/null; then
-		alias pbcopy="xclip -selection clipboard -in"
-		alias pbpaste="xclip -selection clipboard -out"
-	elif type xsel > /dev/null; then
-		alias pbcopy="xsel --input --clipboard"
-		alias pbpaste="xsel --output --clipboard"
-	else
-		function pbcopy {
-			cat - > /tmp/pasteboard
-		}
-		function pbpaste {
-			if [ -f /tmp/pasteboard ]; then
-				cat /tmp/pasteboard
-			fi
-		}
-	fi
-fi
-
-function work-here {
-	session=$(basename $(pwd))
-
-	tmux new-session -s $session -d
-
-	tmux select-window -t $session:1 
-	tmux send-keys "[ -d control/assets ] && cd control/assets || cd resources/assets; laradock enter; exit" C-m 
-
-	tmux splitw -h -p 35
-	tmux send-keys "[ -d control/assets ] && cd control/assets || cd resources/assets; laradock enter; exit" C-m 
-
-	tmux new-window -t $session:2
-	tmux send-keys "laradock enter; exit" C-m 
-
-	tmux new-window -t $session:3
-
-	tmux select-window -t $session:2
-
-	tmux attach-session -t $session
-}
-
+# git aliases
 function merge-to {
 	target_branch="$1"
 	shift
