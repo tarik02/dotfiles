@@ -1,0 +1,17 @@
+setopt promptsubst
+setopt HIST_IGNORE_ALL_DUPS
+setopt append_history
+setopt auto_pushd
+setopt complete_in_word
+setopt extended_history
+setopt hist_expire_dups_first
+setopt hist_ignore_space
+setopt hist_reduce_blanks
+setopt hist_verify
+setopt interactive_comments
+setopt long_list_jobs
+setopt pipe_fail
+setopt share_history
+setopt no_rm_star_silent
+setopt correct
+unsetopt AUTO_CD

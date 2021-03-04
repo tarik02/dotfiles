@@ -1,0 +1,15 @@
+[user]
+	name = Tarik02
+	email = Taras.Fomin@gmail.com
+
+[credential]
+	helper = store
+
+[help]
+	autocorrect = 1
+[commit]
+	gpgsign = false
+[gpg]
+	program = gpg
+[core]
+	autocrlf = false

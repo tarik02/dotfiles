@@ -1,0 +1,9 @@
+/inc/*.merged
+/thirdparty
+!/thirdparty/.gitkeep
+
+/.cache
+/.env
+
+*.zwc
+

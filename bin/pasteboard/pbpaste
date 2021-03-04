@@ -1,0 +1,13 @@
+#!/usr/bin/env bash
+
+if [[ $IS_WSL == 1 ]]; then
+	${WSL_ROOT:-/mnt/c}/Windows/System32/paste.exe
+elif type xclip > /dev/null 2>&1; then
+	xclip -selection clipboard -out
+elif type xsel > /dev/null 2>&1; then
+	xsel --output --clipboard
+else
+	if [ -f $DFI_CACHE/pasteboard ]; then
+		cat $DFI_CACHE/pasteboard
+	fi
+fi
