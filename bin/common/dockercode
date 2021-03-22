@@ -173,7 +173,7 @@ else
 	CONTAINER_NAME="/laradock_app-7.4_1"
 fi
 
-CONTAINER_CONFIG="{\"containerName\":\"$CONTAINER_NAME\",\"settings\":{\"host\":\"$HOST\"}}"
+CONTAINER_CONFIG="{\"containerName\":\"$CONTAINER_NAME\",\"settings\":{\"host\":\"$CONTAINER_HOST\"}}"
 CONTAINER_CONFIG_RAW="$(echo -n $CONTAINER_CONFIG | xxd -p -c 100000 | tr -d '\n')"
 
 URI="vscode-remote://attached-container+$CONTAINER_CONFIG_RAW$CONTAINER_PATH"
