@@ -8,3 +8,5 @@ ZINIT[SNIPPETS_DIR]=$DFI_THIRDPARTY/zinit/snippets
 source "$DFI_THIRDPARTY/zinit/bin/zinit.zsh"
 
 DFI_INC .zshrc
+
+test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
