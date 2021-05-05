@@ -39,12 +39,14 @@ format = ' : [${symbol}${pyenv_prefix}(${version})(\($virtualenv\))]($style)'
 format = ' : [$symbol$version]($style)'
 
 [nodejs]
+symbol = "js "
 format = " : [$symbol($version)]($style)"
 
 [php]
 format = ' : [$symbol($version)]($style)'
 
 [git_branch]
+symbol = "on "
 format = " : [$symbol$branch]($style)"
 
 [git_commit]
