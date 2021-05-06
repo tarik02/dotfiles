@@ -37,5 +37,6 @@ touchbar_create_key 1 'clear' 'clear\n'
 touchbar_create_key 2 'reset' 'reset\n'
 touchbar_create_key 3 'repeat with sudo' 'sudo !!\n\n'
 touchbar_create_key 4 'list' 'll\n'
+touchbar_create_key 5 'fuck' 'fuck\n'
 
 fi
