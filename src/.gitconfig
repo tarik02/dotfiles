@@ -7,9 +7,18 @@
 
 [help]
 	autocorrect = 1
+
 [commit]
-	gpgsign = false
+	gpgsign = true
+
 [gpg]
 	program = gpg
+
 [core]
 	autocrlf = false
+
+[filter "lfs"]
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true
+	clean = git-lfs clean -- %f
