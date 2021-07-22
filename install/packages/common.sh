@@ -32,3 +32,10 @@ fi
 if [ ! -f $HOME/.vim/autoload/plug.vim ]; then
 	curl -fLo $HOME/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 fi
+
+###############################################################################
+# thefuck
+###############################################################################
+if command -v pip3 &> /dev/null; then
+	pip3 install thefuck
+fi
