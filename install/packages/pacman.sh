@@ -2,7 +2,7 @@
 
 set -e
 
-sudo pacman -S \
+sudo pacman -S --needed \
 	git \
 	zsh \
 	unzip \

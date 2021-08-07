@@ -6,16 +6,20 @@ set -e
 ###############################################################################
 # zinit
 ###############################################################################
-mkdir -p $DFI_THIRDPARTY/zinit
-git clone https://github.com/zdharma/zinit.git $DFI_THIRDPARTY/zinit/bin
-zsh -c "source $DFI_THIRDPARTY/zinit/bin/zinit.zsh; zinit module build"
+if [ ! -d $DFI_THIRDPARTY/zinit ]; then
+	mkdir -p $DFI_THIRDPARTY/zinit
+	git clone https://github.com/zdharma/zinit.git $DFI_THIRDPARTY/zinit/bin
+	zsh -c "source $DFI_THIRDPARTY/zinit/bin/zinit.zsh; zinit module build"
+fi
 
 
 ###############################################################################
 # starship.rs
 ###############################################################################
-mkdir -p "$DFI_THIRDPARTY/starship/bin"
-curl -fsSL https://starship.rs/install.sh | bash -s - --yes --bin-dir "$DFI_THIRDPARTY/starship/bin" > /dev/null
+if [ ! -d $DFI_THIRDPARTY/starship/bin ]; then
+	mkdir -p "$DFI_THIRDPARTY/starship/bin"
+	curl -fsSL https://starship.rs/install.sh | bash -s - --yes --bin-dir "$DFI_THIRDPARTY/starship/bin" > /dev/null
+fi
 
 
 ###############################################################################
@@ -42,11 +46,10 @@ if command -v pip3 &> /dev/null; then
 fi
 
 
-
 ###############################################################################
 # fzf
 ###############################################################################
-if command -v git &> /dev/null; then
+if [ ! -d $HOME/.fzf ] && command -v git &> /dev/null; then
 	git clone --depth 1 https://github.com/junegunn/fzf.git $HOME/.fzf
 	$HOME/.fzf/install --key-bindings --completion --no-update-rc
 fi
