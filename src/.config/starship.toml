@@ -67,6 +67,5 @@ min_time = 500
 format = " : took [$duration](bold yellow)"
 
 [jobs]
-threshold = 0
 symbol = ""
 format = " : [$symbol$number jobs]($style)"
