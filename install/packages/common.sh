@@ -8,7 +8,7 @@ set -e
 ###############################################################################
 if [ ! -d $DFI_THIRDPARTY/zinit ]; then
 	mkdir -p $DFI_THIRDPARTY/zinit
-	git clone https://github.com/zdharma/zinit.git $DFI_THIRDPARTY/zinit/bin
+	git clone https://github.com/zdharma-continuum/zinit.git $DFI_THIRDPARTY/zinit/bin
 	zsh -c "source $DFI_THIRDPARTY/zinit/bin/zinit.zsh; zinit module build"
 fi
 
