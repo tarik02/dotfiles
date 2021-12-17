@@ -11,3 +11,7 @@ zle -N up-line-or-beginning-search
 zle -N down-line-or-beginning-search
 #bindkey "$key[Up]" up-line-or-beginning-search
 #bindkey "$key[Down]" down-line-or-beginning-search
+
+# macOS
+bindkey '^[b' backward-word
+bindkey '^[f' forward-word
