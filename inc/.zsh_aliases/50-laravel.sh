@@ -15,5 +15,3 @@ function artisan {
 }
 
 alias art="artisan"
-
-alias dk="laradock"

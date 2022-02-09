@@ -15,3 +15,6 @@ zle -N down-line-or-beginning-search
 # macOS
 bindkey '^[b' backward-word
 bindkey '^[f' forward-word
+
+bindkey '^[[3~' delete-char
+
