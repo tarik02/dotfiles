@@ -18,7 +18,7 @@ fi
 ###############################################################################
 if [ ! -d $DFI_THIRDPARTY/starship/bin ]; then
 	mkdir -p "$DFI_THIRDPARTY/starship/bin"
-	curl -fsSL https://starship.rs/install.sh | bash -s - --yes --bin-dir "$DFI_THIRDPARTY/starship/bin" > /dev/null
+	curl -fsSL https://starship.rs/install.sh | sh -s - --yes --bin-dir "$DFI_THIRDPARTY/starship/bin" > /dev/null
 fi
 
 
