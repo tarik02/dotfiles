@@ -53,3 +53,12 @@ if [ ! -d $HOME/.fzf ] && command -v git &> /dev/null; then
 	git clone --depth 1 https://github.com/junegunn/fzf.git $HOME/.fzf
 	$HOME/.fzf/install --key-bindings --completion --no-update-rc
 fi
+
+
+###############################################################################
+# direnv
+###############################################################################
+if [ ! -d $DFI_THIRDPARTY/direnv ]; then
+	mkdir -p $DFI_THIRDPARTY/direnv
+	curl -sfL https://direnv.net/install.sh | bin_path=$DFI_THIRDPARTY/direnv bash
+fi
