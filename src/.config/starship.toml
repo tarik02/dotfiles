@@ -9,6 +9,7 @@ $git_status\
 $package\
 $nodejs\
 $php\
+${custom.xdebug}\
 $python\
 $cmd_duration\
 $jobs\
@@ -69,3 +70,8 @@ format = " : took [$duration](bold yellow)"
 [jobs]
 symbol = ""
 format = " : [$symbol$number jobs]($style)"
+
+[custom.xdebug]
+symbol = "on "
+when = """ .local/bin/php -r 'exit(extension_loaded("xdebug")?0:1);' """
+format = "+[xdebug]($style) "
