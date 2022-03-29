@@ -2,7 +2,9 @@ DFI_INC() {
 	if [ -f "$DFI_ROOT/inc/$1.merged" ]; then
 		source "$DFI_ROOT/inc/$1.merged"
 	else
-		source <(cat "$DFI_ROOT/inc/$1"/*)
+		for f in "$DFI_ROOT/inc/$1"/*(N); do
+			source "$f"
+		done
 	fi
 }
 
@@ -11,7 +13,9 @@ if [ -f "$DFI_HOME/.env" ]; then
 fi
 
 if [[ -d $DFI_HOME/.env.d && ! -z $(ls -A $DFI_HOME/.env.d) ]]; then
-	source $DFI_HOME/.env.d/*
+	for f in "$DFI_HOME/.env.d"/*(N); do
+		source $f
+	done
 fi
 
 DFI_INC .zshenv
