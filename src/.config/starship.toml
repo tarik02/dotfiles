@@ -46,6 +46,11 @@ format = " : [$symbol($version)]($style)"
 [php]
 format = ' : [$symbol($version)]($style)'
 
+[custom.xdebug]
+symbol = "on "
+when = """ .local/bin/php -r 'exit(extension_loaded("xdebug")?0:1);' """
+format = "+[xdebug]($style) "
+
 [git_branch]
 symbol = "on "
 format = " : [$symbol$branch]($style)"
@@ -70,8 +75,3 @@ format = " : took [$duration](bold yellow)"
 [jobs]
 symbol = ""
 format = " : [$symbol$number jobs]($style)"
-
-[custom.xdebug]
-symbol = "on "
-when = """ .local/bin/php -r 'exit(extension_loaded("xdebug")?0:1);' """
-format = "+[xdebug]($style) "
