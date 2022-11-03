@@ -1,0 +1,11 @@
+#!/usr/bin/env zsh
+
+export DOTFILES="$HOME/.dotfiles"
+
+. "$DOTFILES/lib/env.sh"
+
+# zsh history
+export ZDOTDIR="$XDG_CONFIG_HOME/zsh"
+export HISTFILE="$ZDOTDIR/.zhistory"
+export HISTSIZE=999999999
+export SAVEHIST=$HISTSIZE

@@ -1,0 +1,50 @@
+#!/usr/bin/env zsh
+
+fpath=("$DOTFILES/zsh/plugins" $fpath)
+
+
+###############################################################################
+# Navigation
+###############################################################################
+
+setopt AUTO_CD
+
+setopt AUTO_PUSHD
+setopt PUSHD_IGNORE_DUPS
+setopt PUSHD_SILENT
+
+setopt CORRECT
+setopt CDABLE_VARS
+setopt EXTENDED_GLOB
+
+
+###############################################################################
+# Navigation
+###############################################################################
+
+setopt EXTENDED_HISTORY
+setopt SHARE_HISTORY
+setopt HIST_EXPIRE_DUPS_FIRST
+setopt HIST_IGNORE_DUPS
+setopt HIST_IGNORE_ALL_DUPS
+setopt HIST_FIND_NO_DUPS
+setopt HIST_IGNORE_SPACE
+setopt HIST_SAVE_NO_DUPS
+setopt HIST_VERIFY
+
+
+###############################################################################
+# Colors
+###############################################################################
+
+eval "$(dircolors -b "$ZDOTDIR/dircolors")"
+
+
+###############################################################################
+# Bindings
+###############################################################################
+
+source "$DOTFILES/zsh/bindings.zsh"
+
+
+source "$DOTFILES/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"

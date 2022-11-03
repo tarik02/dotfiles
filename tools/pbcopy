@@ -1,0 +1,13 @@
+#!/usr/bin/env bash
+set -Eeuo pipefail
+
+if grep -qi microsoft /proc/version >/dev/null; then
+    iconv -f utf8 -t cp1251 | exec /mnt/c/Windows/System32/clip.exe
+elif type xclip >/dev/null 2>&1; then
+    xclip -i -selection clipboard -f | xclip -i -selection primary
+elif type xsel >/dev/null 2>&1; then
+    exec xsel --input --clipboard
+else
+    >&2 echo "Unable determine pasteboard server"
+    exit 1
+fi

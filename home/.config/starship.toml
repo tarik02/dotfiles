@@ -1,0 +1,77 @@
+format = """
+$username\
+$hostname\
+$directory\
+$git_branch\
+$git_commit\
+$git_state\
+$git_status\
+$package\
+$nodejs\
+$php\
+${custom.xdebug}\
+$python\
+$cmd_duration\
+$jobs\
+$time\
+$line_break\
+$status\
+$character"""
+
+scan_timeout = 30
+
+[username]
+show_always = true
+format = "[$user]($style)@"
+
+[hostname]
+ssh_only = false
+format = "[$hostname](bold red)"
+trim_at = "-"
+
+[directory]
+format = " : [$path]($style)[$read_only]($read_only_style)"
+truncation_length = 10
+
+[python]
+format = ' : [${symbol}${pyenv_prefix}(${version})(\($virtualenv\))]($style)'
+
+[package]
+format = ' : [$symbol$version]($style)'
+
+[nodejs]
+symbol = "js "
+format = " : [$symbol($version)]($style)"
+
+[php]
+format = ' : [$symbol($version)]($style)'
+
+[custom.xdebug]
+symbol = "on "
+when = """ .local/bin/php -r 'exit(extension_loaded("xdebug")?0:1);' """
+format = "+[xdebug]($style) "
+
+[git_branch]
+symbol = "on "
+format = " : [$symbol$branch]($style)"
+
+[git_commit]
+format = "[\\($hash\\)]($style) [\\($tag\\)]($style)"
+
+[git_state]
+format = '\([$state( $progress_current/$progress_total)]($style)\)'
+
+[git_status]
+format = '([\[$all_status$ahead_behind\]]($style))'
+
+[time]
+disabled = false
+format = " : [$time]($style)"
+
+[cmd_duration]
+min_time = 500
+format = " : took [$duration](bold yellow)"
+
+[jobs]
+symbol = ""
+format = " : [$symbol$number jobs]($style)"

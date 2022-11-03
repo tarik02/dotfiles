@@ -1,0 +1,49 @@
+[init]
+    defaultBranch = master
+
+[color]
+    ui = auto
+
+[color "diff"]
+  meta = white bold
+  frag = cyan bold
+  old = red bold
+  new = green bold
+
+[core]
+    editor = nvim
+    excludesfile = ~/.gitignore
+    attributesfile = ~/.gitattributes
+    ignorecase = false
+
+[pull]
+    rebase = false
+
+[alias]
+    a = add
+    c = commit
+    co = checkout
+    ca = commit -a
+    cm = commit -m
+    cam = commit -am
+    s = status -sb
+
+    master = !git checkout master && git pull --prune
+    develop = !git checkout develop && git pull --prune
+
+    git = !git
+
+    l = log --all --graph --decorate --oneline
+    ll = log --stat --abbrev-commit
+
+    ignore = !([ ! -e .gitignore ] && touch .gitignore) | echo `\n$2` >> .gitignore
+
+    this = !git init && git add . && git commit -m 'Initial commit'
+
+    amend = commit --amend
+    amend-f = !git log -n 1 --pretty=tformat:%s%n%n%b | git commit -F - --amend
+
+    sync = !git pull && git push
+
+[push]
+    default = current
