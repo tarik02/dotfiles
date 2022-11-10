@@ -188,3 +188,16 @@ bindkey -- "${keys[PageDown]}"        .end-of-buffer-or-history
 bindkey -- "${keys[Shift+Tab]}"       .reverse-menu-complete
 bindkey -- "${keys[Ctrl+Left]}"       .backward-word
 bindkey -- "${keys[Ctrl+Right]}"      .forward-word
+
+zsh-widget-noop () {}
+zle -N zsh-widget-noop
+
+bindkey "^[[1;3A" zsh-widget-noop
+bindkey "^[[1;3B" zsh-widget-noop
+bindkey "^[[1;3C" forward-word
+bindkey "^[[1;3D" backward-word
+
+bindkey "^[[1;7A" zsh-widget-noop
+bindkey "^[[1;7B" zsh-widget-noop
+bindkey "^[[1;7D" zsh-widget-noop
+bindkey "^[[1;7C" zsh-widget-noop

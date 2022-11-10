@@ -45,3 +45,5 @@ export FZF_ALT_C_OPTS="--preview 'tree -C {} | head -n 10'"
 # PATH
 export PATH="$HOME/.local/bin:$PATH"
 export PATH="$DOTFILES/bin:$PATH"
+
+export DOCKER_HOST="unix://$XDG_RUNTIME_DIR/podman/podman.sock"

@@ -41,6 +41,22 @@ eval "$(dircolors -b "$ZDOTDIR/dircolors")"
 
 
 ###############################################################################
+# Aliases
+###############################################################################
+
+source "$DOTFILES/aliases/aliases.sh"
+
+
+###############################################################################
+# fzf
+###############################################################################
+
+if command -v fzf >/dev/null; then
+    source "$DOTFILES/zsh/fzf.zsh"
+fi
+
+
+###############################################################################
 # Bindings
 ###############################################################################
 
@@ -48,3 +64,24 @@ source "$DOTFILES/zsh/bindings.zsh"
 
 
 source "$DOTFILES/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
+
+if command -v starship >/dev/null; then
+    export STARSHIP_CONFIG="$DOTFILES/starship/config.toml"
+    eval "$(starship init zsh)"
+fi
+
+if command -v direnv >/dev/null; then
+    eval "$(direnv hook zsh)"
+fi
+
+if [ -f "$HOME/.asdf/asdf.sh" ]; then
+    . "$HOME/.asdf/asdf.sh"
+    fpath=("$ASDF_DIR/completions" $fpath)
+fi
+
+
+###############################################################################
+# Completion
+###############################################################################
+
+source $DOTFILES/zsh/completion.zsh
