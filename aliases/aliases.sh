@@ -27,7 +27,7 @@ alias svc-edit='systemctl --user edit --force --full'
 alias logs='journalctl --user'
 
 if _has_cmd bat; then
-    alias cat='bat -p'
+    alias cat='bat -pP'
 fi
 
 
