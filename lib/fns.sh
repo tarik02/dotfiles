@@ -1,7 +1,9 @@
 ask_yn() {
-    echo "$1 [yes]"
+    default="${2:-yes}"
+    echo "$1 [$default]"
     read -p "> " choice
-    [[ ${REPLY:-y} =~ ^[Yy]$ ]] || return 1
+    [ -n "$choice" ] || choice="$default"
+    [[ "$choice" =~ ^[Yy] ]] || return 1
 }
 
 function cmd_exists() {
