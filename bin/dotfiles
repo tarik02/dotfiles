@@ -1,0 +1,44 @@
+#!/usr/bin/env bash
+set -Eeuo pipefail
+
+help() {
+    cat <<DOC
+dotfiles [command] [arguments]
+
+Commands:
+    update
+    reload
+DOC
+}
+
+die() {
+    exit 1
+}
+
+(( $# >= 1 )) || ( help; die )
+
+command="$1"
+shift
+
+case "$command" in
+    update)
+        (( $# > 0 )) && ( help; die )
+
+        (
+            cd "$DOTFILES"
+            git pull
+            ./install.sh
+        )
+        ;;
+
+    reload)
+        (( $# > 0 )) && ( help; die )
+
+        exec "$SHELL" -i
+        ;;
+
+    *)
+        help
+        die
+        ;;
+esac
