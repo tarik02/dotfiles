@@ -11,8 +11,17 @@ alias oo='open .'
 
 alias sudo='sudo '
 alias _='sudo -E '
-alias vim='nvim'
-alias vi='nvim'
+
+if _has_cmd nvim; then
+    alias vim='nvim'
+    alias vi='nvim'
+elif _has_cmd vim; then
+    alias nvim='vim'
+    alias vi='vim'
+elif _has_cmd vi; then
+    alias nvim='vi'
+    alias vim='vi'
+fi
 
 alias q='~ && clear'
 
@@ -48,3 +57,5 @@ function artisan {
 }
 
 alias art="artisan"
+
+[ -f "$DOTFILES/custom/aliases.sh" ] && . "$DOTFILES/custom/aliases.sh"

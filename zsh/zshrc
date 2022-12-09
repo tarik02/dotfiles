@@ -37,7 +37,9 @@ setopt HIST_VERIFY
 # Colors
 ###############################################################################
 
-eval "$(dircolors -b "$ZDOTDIR/dircolors")"
+if command -v dircolors >/dev/null; then
+    eval "$(dircolors -b "$ZDOTDIR/dircolors")"
+fi
 
 
 ###############################################################################
@@ -51,9 +53,7 @@ source "$DOTFILES/aliases/aliases.sh"
 # fzf
 ###############################################################################
 
-if command -v fzf >/dev/null; then
-    source "$DOTFILES/zsh/fzf.zsh"
-fi
+source "$DOTFILES/zsh/fzf.zsh"
 
 
 ###############################################################################
@@ -79,6 +79,8 @@ if [ -f "$HOME/.asdf/asdf.sh" ]; then
     fpath=("$ASDF_DIR/completions" $fpath)
 fi
 
+
+[ -f "$DOTFILES/custom/zshrc" ] && . "$DOTFILES/custom/zshrc"
 
 ###############################################################################
 # Completion

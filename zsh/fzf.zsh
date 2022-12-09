@@ -1,7 +1,11 @@
 #!/usr/bin/env zsh
 
-source /usr/share/fzf/completion.zsh
-source /usr/share/fzf/key-bindings.zsh
+if [ -f "$HOME/.fzf.zsh" ]; then
+    source "$HOME/.fzf.zsh"
+else
+    [ -f /usr/share/fzf/completion.zsh ] && source /usr/share/fzf/completion.zsh
+    [ -f /usr/share/fzf/key-bindings.zsh ] && source /usr/share/fzf/key-bindings.zsh
+fi
 
 _fzf_comprun() {
     local command=$1

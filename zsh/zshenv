@@ -1,5 +1,3 @@
-#!/usr/bin/env zsh
-
 export DOTFILES="$HOME/.dotfiles"
 
 . "$DOTFILES/lib/env.sh"
