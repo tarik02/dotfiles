@@ -1,3 +1,7 @@
+if [ -f "$HOME/.asdf/asdf.sh" ]; then
+    echo ". \"\$HOME/.asdf/asdf.sh\""
+fi
+
 if [ -d /opt/homebrew/bin ]; then
     echo 'export PATH="/opt/homebrew/bin:$PATH"'
 fi
