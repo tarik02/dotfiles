@@ -44,7 +44,7 @@ export FZF_ALT_C_OPTS="--preview 'tree -C {} | head -n 10'"
 
 # PATH
 export PATH="$HOME/.local/bin:$PATH"
-export PATH="$DOTFILES/bin:$PATH"
+export PATH="$DOTFILES/bin:$DOTFILES/.local/bin:$PATH"
 
 if [[ ${DOTFILES_INSTALLING:-} != 1 ]]; then
     [ -f "$DOTFILES/custom/env.sh" ] && . "$DOTFILES/custom/env.sh"
