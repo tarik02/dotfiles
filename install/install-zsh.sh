@@ -17,5 +17,5 @@ case "$OSTYPE" in
 esac
 
 if [[ "$current_shell" != *'/zsh' ]]; then
-    ask_yn "Change shell to zsh?" && chsh -s "$(which zsh)" "$USER"
+    ask_yn "Change shell to zsh?" && sudo chsh -s "$(which zsh)" "$USER"
 fi
