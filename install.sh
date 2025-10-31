@@ -3,7 +3,7 @@ set -Eeuo pipefail
 
 export DOTFILES_INSTALLING=1
 
-DOTFILES=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )
+[ -z "${DOTFILES:-}" ] && DOTFILES=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )
 export DOTFILES
 
 git submodule init
@@ -15,6 +15,10 @@ fi
 
 . ./lib/colors.sh
 . ./lib/fns.sh
+
+if ask_yn "Run bootstrap script? (Installs missing utilities)" yes; then
+    . ./bootstrap.sh
+fi
 
 doctor_status=0
 ./doctor.sh || doctor_status=$?
