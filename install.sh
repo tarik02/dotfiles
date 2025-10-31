@@ -3,6 +3,9 @@ set -Eeuo pipefail
 
 export DOTFILES_INSTALLING=1
 
+DOTFILES=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )
+export DOTFILES
+
 git submodule init
 git submodule update
 

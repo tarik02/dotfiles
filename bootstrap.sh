@@ -1,7 +1,8 @@
 #!/usr/bin/env bash
 set -Eeuo pipefail
 
-DOTFILES="${DOTFILES:="$HOME/.dotfiles"}"
+DOTFILES=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )
+export DOTFILES
 
 mkdir -p "$DOTFILES/.local/bin"
 

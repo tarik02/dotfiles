@@ -4,6 +4,7 @@ _has_cmd() {
 
 alias g='git'
 alias y='yarn'
+alias gt='git-town'
 
 alias open='open_command'
 alias o='open'

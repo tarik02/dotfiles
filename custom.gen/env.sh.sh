@@ -1,5 +1,5 @@
-if [ -f "$HOME/.asdf/asdf.sh" ]; then
-    echo ". \"\$HOME/.asdf/asdf.sh\""
+if command -v mise >/dev/null; then
+    echo 'eval "$(mise activate zsh)"'
 fi
 
 if [ -d /opt/homebrew/bin ]; then

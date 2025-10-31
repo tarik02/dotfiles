@@ -17,7 +17,7 @@ doctor_check_warn 'starship' 'cmd_exists starship'
 doctor_check_warn 'bat' 'cmd_exists bat'
 doctor_check_warn 'tmux' 'cmd_exists tmux'
 doctor_check_warn 'direnv' 'cmd_exists direnv'
-doctor_check_warn 'asdf' 'cmd_exists asdf'
+doctor_check_warn 'mise' 'cmd_exists mise'
 
 set -e
 

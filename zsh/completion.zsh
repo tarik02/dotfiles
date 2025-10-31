@@ -1,4 +1,4 @@
-fpath=($DOTFILES/zsh/plugins/zsh-completions/src $fpath)
+fpath=($DOTFILES/zsh/plugins/zsh-completions/src $DOTFILES/completions $fpath)
 
 # Should be called before compinit
 zmodload zsh/complist

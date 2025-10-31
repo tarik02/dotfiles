@@ -1,6 +1,6 @@
 mkdir -p "$ZDOTDIR"
 
-ln -sf "$DOTFILES/zsh/zshenv" "$HOME/.zshenv"
+cat "$DOTFILES/zsh/zshenv" | sed "s|^export DOTFILES=.*$|export DOTFILES=\"${DOTFILES}\"|g" > "$ZDOTDIR/.zshenv"
 ln -sf "$DOTFILES/zsh/zshrc" "$ZDOTDIR/.zshrc"
 
 ln -sf "$DOTFILES/zsh/dircolors" "$ZDOTDIR/dircolors"
